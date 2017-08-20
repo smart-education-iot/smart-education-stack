@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>对不起，您访问的页面不存在！</title>
+	<#include "*/common/html/htmlHeader.html"/>
+	<link rel="stylesheet" type="text/css" href="${base!}/static/css/error/error.css" />
+	<link href="${base!}/static/css/webfinal-index.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="tip-body">
+		<img src="${base!}/static/img/error/404.png" />
+		<div class="tip-content">
+			<h2>抱歉！页面无法访问......</h2>
+			<p><label>可能原因：</label><br/>
+				网址有错误<label>>请检查地址是否完整或存在多余字符</label><br/>
+				网址已失效<label>>可能页面已删除，活动已下线等</label>
+			</p>
+			<a href="${base!}/home/index" target="_self">返回首页>></a>
+		</div>
+	</div>
+</div>
+
+<!-- footer -->
+<#include "*/common/html/htmlFooter.html"/>
+</body>
+</html>

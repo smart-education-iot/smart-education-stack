@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>服务器错误！</title>
+	<#include "*/common/html/htmlHeader.html"/>
+	<link rel="stylesheet" type="text/css" href="${base!}/static/css/error/error.css" />
+	<link href="${base!}/static/css/webfinal-index.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="tip-body">
+		<img src="${base!}/static/img/error/500.png" style="left: 350px;top: 60px;" />
+		<div class="tip-content">
+			<h2>抱歉！内部服务器错误......</h2>
+			<!-- 
+			<button class="btn btn-info" style="margin-top: 20px;" onclick="javascript:window.location.reload();"><i class="fa fa-refresh"></i>&nbsp;&nbsp;&nbsp;刷新页面</button>
+			 -->
+			<p>请联系技术支持人员处理( <@webfinal.m 'webfinal.app.contactPhone'/>：<span style="color:#777;"><@webfinal.m 'webfinal.cloud.phoneNumber'/></span>)，谢谢！</p>
+		</div>
+	</div>
+</div>
+
+<!-- footer -->
+<#include "*/common/html/htmlFooter.html"/>
+</body>
+</html>

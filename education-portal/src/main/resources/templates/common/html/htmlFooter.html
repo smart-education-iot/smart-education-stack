@@ -1,0 +1,61 @@
+<!-- JavaScript -->
+<script src="${base!}${urls.getForLookupPath('/js/jquery.min.js')}"></script>
+<script src="${base!}${urls.getForLookupPath('/js/bootstrap.min.js')}"></script>
+<!-- JS Template -->
+<script src="${base!}/static/js/template/template.js" type="text/javascript"></script>
+<!-- JS Validator -->
+<script src="${base!}/static/js/validator/jquery.validator.js?local=zh-CN"></script>
+<script type="text/javascript">
+//默认上下文环境
+var DEFAULT_CONTEXT_PATH = "${base!}"
+if(typeof(template) != "undefined"){
+	//格式化时间方法
+	template.helper('$formatDate', function (date, format) {
+	    if (date == null) {
+	        return " -  ";
+	    } else {
+	        var cdate = null;
+	        if (date.time) {
+	            cdate = new Date(date.time);
+	        } else {
+	            cdate = new Date(date);
+	        }
+	        if (cdate != null) {
+	            return cdate.format(format);
+	        }
+	        return "";
+	    }
+	});
+	//格式化长度
+	template.helper('$formatLength', function (value,length) {
+	   if (value.length > length) {
+	        value = value.substring(0, length) + "...";
+	    }
+	    return value;
+	});
+};
+/**
+ * 初始化函数
+ */
+$(function(){
+    var year = new Date().getFullYear();
+    if(year>2016){
+    	$("#copyright").html("2016-"+year);
+    }else{
+    	$("#copyright").html(year);
+    }
+});
+/**
+ * 当前时间
+ */
+function currentTime(){
+	var d = new Date(),str = '';
+	str += d.getFullYear()+'年';
+	str  += d.getMonth() + 1+'月';
+	str  += d.getDate()+'日';
+	str += d.getHours()+'时'; 
+	str  += d.getMinutes()+'分'; 
+	str+= d.getSeconds()+'秒'; 
+	return str;
+}
+</script>

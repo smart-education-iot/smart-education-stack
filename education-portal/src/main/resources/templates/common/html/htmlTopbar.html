@@ -1,0 +1,109 @@
+<nav class="navbar navbar-fixed-top navbar-dark navigation-1611030818 dgp-header">
+ 	<a class="navbar-brand" style="color:#fff;padding-top:0.9rem;">
+      	<img src="${base!}/static/img/logo.png" width="28" height="28" style="margin-top:-3px;">
+      	<span style="font-size:20px"><@webfinal.m 'webfinal.app.name'/></span>
+ 	</a>
+    <ul class="nav navbar-nav navbar-nav-left">
+          <li class="nav-item active">
+              <a class="nav-link" href="${base!}/home/index?csrf=${csrf!}" target="main-dgp-Frame"><i class="fa fa-home" style="font-size:120%;"></i>首页</a>
+          </li>
+      	  <#if menuChild??>
+      			<#list menuChild as menu>
+           			<li class="nav-item">
+                       <a class="nav-link" data-placement="right" title="${menu.NAME!}"  href="${menu.PATH!}"  target="main-dgp-Frame">
+                           <i class="${menu.ICON!'fa fa-cog'}" style="font-size:120%;"></i><span>${menu.NAME!}</span>
+                       </a>
+                   	</li>
+        		</#list>
+	  	  </#if>
+    </ul>
+    <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item">
+            <a class="nav-link pos-r" href="${base!}/cloud/message/index?csrf=${csrf!}" target="main-cloud-Frame">
+                <i class="fa fa-envelope" style="font-size:110%;"></i><i class="fa fa-circle text-danger small pos-a" style="top:0.5rem;right:-1rem;"></i>
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-hover" style="margin-left:1.5rem;">
+            <a class="nav-link" href="#" data-toggle="collapse" style="font-size:14px;margin-top:2px;">
+            	<#if currentUser??>
+	            	<#if currentUser.NAME?length gt 5> 
+	          		<i class="fa fa-user-circle"></i>&nbsp;${currentUser.NAME?substring(0,5)}..
+	   				<#else>
+	 				<i class="fa fa-user-circle"></i>&nbsp;${currentUser.NAME!}
+	          		</#if>
+	          	</#if>
+            	<b class="fa fa-caret-down"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" style="margin-top:1px;">
+                <a class="dropdown-item" href="${base!}/cloud/account/index?csrf=${csrf!}"  target="main-cloud-Frame">
+                	<i class="fa fa-user text-primary"></i>&nbsp;&nbsp;账号管理
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item theme-item" href="#"  data-toggle="modal" data-target="#themeModal">
+                	<i class="fa fa-yelp text-primary" style="font-size:110%;margin-left:1px;margin-right:1px;"></i>&nbsp;主题风格
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="${base!}/cloud/message/index?csrf=${csrf!}"  target="main-cloud-Frame">
+                	<i class="fa fa-comments text-primary" style="font-size:110%;"></i>&nbsp;系统消息
+               	</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="${base!}/logout?csrf=${csrf!}"><i class="fa fa-sign-out text-danger"></i>&nbsp;退出平台</a>
+            </div>
+        </li>
+        <li class="nav-item" style="margin-left:1.5rem;">
+            <a class="nav-link" href="#" data-toggle="collapse" id="dashboard-fullscreen">
+                <i class="fa fa-arrows-alt"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- 主题模态框（Modal） -->
+<div class="modal fade" id="themeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:350px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" theme="${theme!'default'}" id="myModalLabel" style="font-size:15px;"><i class="fa fa-yelp text-info"></i>&nbsp;主题风格切换</h4>
+            </div>
+            <div class="modal-body">
+            	<ul class="list-group theme-list-group">
+            		<li class="list-group-item">
+				    	<a href="#" data-toggle="collapse" theme="default">
+				    		<i class="fa <#if theme=='default'>fa-check-circle<#else>fa-circle</#if>" style="color:#006699;">&nbsp;</i>
+				    		<span style="">默认主题</span>
+				    	</a>
+				    </li>
+				    <li class="list-group-item">
+				    	<a href="#" data-toggle="collapse" theme="red">
+				    		<i class="fa <#if theme=='red'>fa-check-circle<#else>fa-circle</#if>" style="color:#FF6600;">&nbsp;</i><span style="">红色主题</span>
+				    	</a>
+				    </li>
+				    <li class="list-group-item">
+				    	<a href="#" data-toggle="collapse" theme="blue">
+				    		<i class="fa <#if theme=='blue'>fa-check-circle<#else>fa-circle</#if>" style="color:#0000CC;">&nbsp;</i><span style="">蓝色主题</span>
+				    	</a>
+				    </li>
+				    <li class="list-group-item">
+				    	<a href="#" data-toggle="collapse" theme="orange">
+				    		<i class="fa <#if theme=='orange'>fa-check-circle<#else>fa-circle</#if>" style="color:#FF9933;">&nbsp;</i><span style="">橙色主题</span>
+				    	</a>
+				    </li>
+				    <li class="list-group-item">
+				   		<a href="#" data-toggle="collapse" theme="green">
+				    		<i class="fa <#if theme=='green'>fa-check-circle<#else>fa-circle</#if>" style="color:#009933;">&nbsp;</i><span style="">绿色主题</span>
+				    	</a>
+				    </li>
+				    <li class="list-group-item">
+				    	<a href="#" data-toggle="collapse" theme="cyan">
+				    		<i class="fa <#if theme=='cyan'>fa-check-circle<#else>fa-circle</#if>" style="color:#0099CC;">&nbsp;</i><span style="">青色主题</span>
+				    	</a>
+				    </li>
+				</ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default theme-cancel-button" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;关闭</button>
+                <button type="button" class="btn btn-primary theme-submit-button"><i class="fa fa-check-circle"></i>&nbsp;提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!--  Jmx Setting
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+  <jmxConfigurator/>
+  -->
+  <!-- <include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- Log message format -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	  <file>smart-education-portal.log</file>
+	  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    <!-- daily rollover -->
+	    <FileNamePattern>smart-education-portal.%d{yyyy-MM-dd}.log</FileNamePattern>
+	    <!-- keep 30 days' worth of history -->
+	    <maxHistory>30</maxHistory>         
+	  </rollingPolicy>
+	  <encoder>
+	    <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+	  </encoder>        
+  </appender>
+  <!-- Ned appender to write to file
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>gconsole.log</file>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  -->
+  <logger name="com.igap.platform" level="WARN">
+    <appender-ref ref="FILE" />
+  </logger>
+  <logger name="org.mybatis" level="INFO">
+    <appender-ref ref="STDOUT" />
+  </logger>
+  <logger name="org.springframework" level="ERROR" />
+
+  <!-- Setting the root level of logging to INFO -->
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+  </root>
+</configuration>
