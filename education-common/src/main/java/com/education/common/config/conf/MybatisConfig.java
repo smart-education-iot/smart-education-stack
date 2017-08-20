@@ -7,7 +7,6 @@ import java.util.Properties;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
-import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
