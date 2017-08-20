@@ -1,4 +1,4 @@
-package com.examstack.scoremarker;
+package com.education.score.marker;
 
 import java.io.IOException;
 
@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.examstack.common.daemon.AbstractDaemon;
-import com.examstack.common.domain.exam.AnswerSheet;
-import com.examstack.scoremarker.config.ScoreMarkConfig;
+import com.education.common.daemon.AbstractDaemon;
+import com.education.common.domain.exam.AnswerSheet;
+import com.education.score.config.ScoreMarkConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.ConsumerCancelledException;
 import com.rabbitmq.client.QueueingConsumer;
@@ -19,10 +19,9 @@ import com.rabbitmq.client.ShutdownSignalException;
 
 /**
  * 
- * @author Ocelot
+ * @author jamesli
  *
  */
-@SuppressWarnings("deprecation")
 @Component
 public class ScoreMarkerMain extends AbstractDaemon {
 
@@ -30,7 +29,6 @@ public class ScoreMarkerMain extends AbstractDaemon {
 	private QueueingConsumer consumer;
 
 	private static final Logger LOGGER = Logger.getLogger(ScoreMarkerMain.class);
-	@SuppressWarnings("unused")
 	private boolean waitingForMessage = false;
 	@Autowired
 	private ScoreCalcuService scoreCalcuService;

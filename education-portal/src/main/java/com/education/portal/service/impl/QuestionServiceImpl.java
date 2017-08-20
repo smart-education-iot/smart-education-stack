@@ -19,7 +19,7 @@ import com.education.portal.mapper.QuestionMapper;
 import com.education.portal.service.QuestionService;
 
 /**
- * @author Ocelot
+ * @author jamesli
  * @date 2014年6月8日 下午8:21:13
  */
 @Service("questionService")

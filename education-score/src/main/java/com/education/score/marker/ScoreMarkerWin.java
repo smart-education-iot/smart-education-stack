@@ -1,23 +1,19 @@
-package com.examstack.scoremarker;
+package com.education.score.marker;
 
 import java.io.IOException;
 
-import org.apache.commons.daemon.DaemonContext;
-import org.apache.commons.daemon.DaemonInitException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.examstack.common.domain.exam.AnswerSheet;
-import com.examstack.scoremarker.config.ScoreMarkConfig;
+import com.education.common.domain.exam.AnswerSheet;
+import com.education.score.config.ScoreMarkConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.ConsumerCancelledException;
 import com.rabbitmq.client.QueueingConsumer;
 import com.rabbitmq.client.ShutdownSignalException;
 
-@SuppressWarnings({ "unused", "deprecation" })
 @Component
 public class ScoreMarkerWin {
 
@@ -32,8 +28,9 @@ public class ScoreMarkerWin {
 	private static boolean waitingForMessage = false;
 	
 	private static final Logger LOGGER = Logger.getLogger(ScoreMarkerWin.class);
-	@SuppressWarnings("resource")
+	
 	public void init() {
+
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(ScoreMarkConfig.class);
 		context.refresh();

@@ -28,7 +28,7 @@ import com.education.portal.service.QuestionService;
 import com.google.gson.Gson;
 
 /**
- * @author Ocelot
+ * @author jamesli
  * @date 2014年7月29日 下午4:31:03
  */
 @Controller

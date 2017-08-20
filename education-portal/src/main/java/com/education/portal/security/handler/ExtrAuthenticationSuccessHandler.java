@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  * <p>
  * The logic used is that of the {@link AbstractAuthenticationTargetUrlRequestHandler parent class}.
  *
- * @author Ocelot
+ * @author jamesli
  * @since 3.0
  */
 public class ExtrAuthenticationSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements AuthenticationSuccessHandler {

@@ -13,7 +13,7 @@ import com.education.common.utils.Page;
 
 
 /**
- * @author Ocelot
+ * @author jamesli
  * @date 2014年6月8日 下午5:52:44
  */
 public interface QuestionService {

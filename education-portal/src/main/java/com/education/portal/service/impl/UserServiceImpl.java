@@ -16,7 +16,7 @@ import com.education.portal.mapper.UserMapper;
 import com.education.portal.service.UserService;
 
 /**
- * @author Ocelot
+ * @author jamesli
  * @date 2014年6月8日 下午8:21:31
  */
 @Service

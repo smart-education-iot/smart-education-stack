@@ -1,8 +1,9 @@
-package com.examstack.scoremarker;
+package com.education.score.marker;
 
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -10,9 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.examstack.common.domain.exam.AnswerSheet;
-import com.examstack.common.domain.exam.AnswerSheetItem;
-import com.examstack.common.domain.exam.ExamPaper;
+import com.education.common.domain.exam.AnswerSheet;
+import com.education.common.domain.exam.AnswerSheetItem;
+import com.education.common.domain.exam.ExamPaper;
 import com.google.gson.Gson;
 
 @Service
@@ -33,7 +34,7 @@ public class ScoreCalcuService {
 	@Autowired
 	HashMap<String, ExamPaper> Examapapers;
 
-	private static final Logger LOGGER = Logger.getLogger(ScoreCalcuService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ScoreCalcuService.class);
 
 	public void calcuScore(AnswerSheet as) {
 		System.out.println("answerSheet is calculating..." + as);

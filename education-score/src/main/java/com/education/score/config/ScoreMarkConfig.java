@@ -1,11 +1,12 @@
-package com.examstack.scoremarker.config;
+package com.education.score.config;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,9 +15,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.web.client.RestTemplate;
 
-import com.examstack.common.Constants;
-import com.examstack.common.domain.exam.ExamPaper;
-import com.examstack.scoremarker.ScoreMarkerMain;
+import com.education.common.domain.exam.ExamPaper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -25,7 +24,7 @@ import com.rabbitmq.client.QueueingConsumer;
 
 /**
  * 
- * @author Ocelot
+ * @author jamesli
  *
  */
 @SuppressWarnings("deprecation")
@@ -34,8 +33,11 @@ import com.rabbitmq.client.QueueingConsumer;
 public class ScoreMarkConfig {
 
 	@SuppressWarnings("unused")
-	private static final Logger LOGGER = Logger.getLogger(ScoreMarkerMain.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ScoreMarkConfig.class);
 
+	@Value("${rabbitmq.answersheet.data.queue}")
+	private String ANSWERSHEET_DATA_QUEUE;
+	
 	@Value("${rabbitmq.host}")
 	private String messageQueueHostname;
 	
@@ -53,16 +55,16 @@ public class ScoreMarkConfig {
 		factory.setHost(messageQueueHostname);
 		Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel();
-		channel.queueDeclare(Constants.ANSWERSHEET_DATA_QUEUE, true, false, false, null);
+		channel.queueDeclare(ANSWERSHEET_DATA_QUEUE, true, false, false, null);
 		QueueingConsumer consumer = new QueueingConsumer(channel);
-		channel.basicConsume(Constants.ANSWERSHEET_DATA_QUEUE, true, consumer);
+		channel.basicConsume(ANSWERSHEET_DATA_QUEUE, true, consumer);
 		return consumer;
 
 	}
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		String propertyFilePath = Constants.CONFIG_PATH + File.separator 	+ "config" + File.separator + "scoremaker.properties";
+		String propertyFilePath = File.separator 	+ "config" + File.separator + "scoremaker.properties";
 		File f = new File(propertyFilePath);
 		if (!f.exists()){
 			propertyFilePath = "config" + File.separator + "scoremaker.properties";

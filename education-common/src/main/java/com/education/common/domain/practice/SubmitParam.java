@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @author Ocelot
+ * @author jamesli
  * @date 2014年8月3日 下午7:56:19
  */
 @XmlRootElement	

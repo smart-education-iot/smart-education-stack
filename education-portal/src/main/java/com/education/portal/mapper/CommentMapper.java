@@ -9,7 +9,7 @@ import com.education.common.utils.Page;
 
 
 /**
- * @author Ocelot
+ * @author jamesli
  * @date 2014年6月8日 下午8:32:33
  */
 public interface CommentMapper {
